@@ -1,1 +1,102 @@
-!function n(o,r,t){function e(u,p){if(!r[u]){if(!o[u]){var a="function"==typeof require&&require;if(!p&&a)return a(u,!0);if(i)return i(u,!0);var f=new Error("Cannot find module '"+u+"'");throw f.code="MODULE_NOT_FOUND",f}var l=r[u]={exports:{}};o[u][0].call(l.exports,function(n){var r=o[u][1][n];return e(r||n)},l,l.exports,n,o,r,t)}return r[u].exports}for(var i="function"==typeof require&&require,u=0;u<t.length;u++)e(t[u]);return e}({1:[function(n,o,r){function t(n){this.skin=n}t.prototype.pingPong=function(n){for(var o=[],r=1;r<=n;r++)r%15==0?o.push("ping-pong"):r%3==0?o.push("ping"):r%5==0?o.push("pong"):o.push(r);return o},r.calculatorModule=t},{}],2:[function(n,o,r){var t=n("./../js/ping-pong.js").calculatorModule;$(document).ready(function(){$("#ping-pong-form").submit(function(n){n.preventDefault();var o=$("#goal").val();$("#solution").empty();new t("hot pink").pingPong(o).forEach(function(n){$("#solution").append("<li>"+n+"</li>")})})}),$(function(){$("#signup").submit(function(n){n.preventDefault();var o=$("#email").val();$("#signup").hide(),console.log(o),$("#solution").prepend("<p>Thank You, "+o+" has been added to our list!</p>")})})},{"./../js/ping-pong.js":1}]},{},[2]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+function Calculator(skinName) {
+  this.skin = skinName;
+}
+
+
+Calculator.prototype.pingPong = function(goal) {
+  var output = [];
+  for (var i = 1; i <= goal; i++) {
+    if (i % 15 === 0) {
+      output.push("ping-pong");
+    } else if (i   % 3 === 0) {
+      output.push("ping");
+    } else if (i % 5 === 0) {
+      output.push("pong");
+    } else  {
+      output.push(i);
+    }
+  }
+  return output;
+};
+
+Calculator.prototype.add = function(goal, number2) {
+  return goal + number2;
+}
+Calculator.prototype.sub = function(goal, number2) {
+  return goal - number2;
+}
+Calculator.prototype.mult = function(goal, number2) {
+  return goal * number2;
+}
+Calculator.prototype.div = function(goal, number2) {
+  return goal / number2;
+}
+
+exports.calculatorModule = Calculator;
+
+},{}],2:[function(require,module,exports){
+var Calculator = require('./../js/ping-pong.js').calculatorModule;
+
+
+$(document).ready(function() {
+  $('#add').click(function(){
+    var goal = parseInt($("#goal").val());
+    var number2 = parseInt($("#number2").val());
+    var calc = new Calculator ("human");
+    var addResult = calc.add(goal, number2);
+    $('#solution').append("<li>" + addResult + "</li>");
+  });
+
+  $('#SUB').click(function(){
+    var goal = parseInt($("#goal").val());
+    var number2 = parseInt($("#number2").val());
+    var calc = new Calculator ("human");
+    var subResult = calc.sub(goal, number2);
+    $('#solution').append("<li>" + subResult + "</li>");
+  });
+
+  $('#multiples').click(function(){
+    var goal = parseInt($("#goal").val());
+    var number2 = parseInt($("#number2").val());
+    var calc = new Calculator ("human");
+    var multResult = calc.mult(goal, number2);
+    $('#solution').append("<li>" + multResult + "</li>");
+  });
+
+  $('#divide').click(function(){
+    var goal = parseInt($("#goal").val());
+    var number2 = parseInt($("#number2").val());
+    var calc = new Calculator ("human");
+    var divResult = calc.div(goal, number2);
+    $('#solution').append("<li>" + divResult + "</li>");
+  });
+});
+
+var Calculator = require('./../js/ping-pong.js').calculatorModule;
+
+
+$(document).ready(function() {
+  $('#ping-pong-form').submit(function(event) {
+    event.preventDefault();
+    var goal = $('#goal').val();
+    $('#solution').empty();
+    var simpleCalculator = new Calculator("hot pink");
+    var output = simpleCalculator.pingPong(goal);
+    output.forEach(function(element) {
+      $('#solution').append("<li>" + element + "</li>");
+    });
+  });
+});
+
+$(function(){
+  $('#signup').submit(function(event){
+    event.preventDefault();
+    var email = $('#email').val();
+    $('#signup').hide();
+    console.log(email);
+    $('#solution').prepend('<p>Thank You, ' +  email + ' has been added to our list!</p>');
+  });
+});
+
+},{"./../js/ping-pong.js":1}]},{},[2]);
