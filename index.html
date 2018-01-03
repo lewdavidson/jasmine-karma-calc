@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="build/css/vendor.css">
+    <script src="build/js/vendor.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
-     <!-- <script type="text/javascript" src="js/pingpong-interface.js"></script> -->
     <title>Ping Pong</title>
   </head>
   <body>
-    <form id="ping-pong-form">
-      <label for="goal">Enter a number:</label>
-      <input id="goal" type="number">
-      <label for="number2">Enter another number PUNK!</label>
-      <input id="number2" type="number">
-      <button type="button" id="add">+</button>
-      <button type="button" id="SUB">-</button>
-      <button type="button" id="multiples">*</button>
-      <button type="button" id="divide">/</button>
-      <button type="submit">Ping-PONG</button>
-    </form>
-    <form id="signup">
-      <label for="goal">Enter your email:</label>
-      <input type="text" id="email">
-      <button type="submit">Submit</button>
-    </form>
-    <ul id="solution"></ul>
+    <div class="container">
+      <h3>Well look at the time! </h3>
+      <h3 id="time"></h3>
+      <form id="ping-pong-form">
+        <div class="form-group">
+          <label for="goal">Enter a number:</label>
+          <input id="goal" type="number">
+          <label for="number2">Enter another number PUNK!</label>
+          <input id="number2" type="number">
+          <button type="button" id="add">+</button>
+          <button type="button" id="SUB">-</button>
+          <button type="button" id="multiples">*</button>
+          <button type="button" id="divide">/</button>
+          <button class="btn-success" type="submit">Ping-PONG</button>
+        </div>
+      </form>
+      <form id="signup">
+        <div class="form-group">
+          <label for="goal">Enter your email:</label>
+          <input type="text" id="email">
+          <button class="btn-success" type="submit">Submit</button>
+        </div>
+      </form>
+      <ul id="solution"></ul>
+    </div>
   </body>
 </html>

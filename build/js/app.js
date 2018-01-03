@@ -9,7 +9,7 @@ Calculator.prototype.pingPong = function(goal) {
   for (var i = 1; i <= goal; i++) {
     if (i % 15 === 0) {
       output.push("ping-pong");
-    } else if (i   % 3 === 0) {
+    } else if (i % 3 === 0) {
       output.push("ping");
     } else if (i % 5 === 0) {
       output.push("pong");
@@ -97,6 +97,10 @@ $(function(){
     console.log(email);
     $('#solution').prepend('<p>Thank You, ' +  email + ' has been added to our list!</p>');
   });
+});
+
+$(document).ready(function(){
+  $('#time').text(moment());
 });
 
 },{"./../js/ping-pong.js":1}]},{},[2]);

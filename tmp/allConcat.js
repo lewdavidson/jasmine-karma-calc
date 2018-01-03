@@ -60,3 +60,7 @@ $(function(){
     $('#solution').prepend('<p>Thank You, ' +  email + ' has been added to our list!</p>');
   });
 });
+
+$(document).ready(function(){
+  $('#time').text(moment());
+});
